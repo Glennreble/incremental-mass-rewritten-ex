@@ -19,7 +19,8 @@ const ELEMENTS = {
         'Pa','U','Np','Pu','Am','Cm','Bk','Cf','Es','Fm',
         'Md','No','Lr','Rf','Db','Sg','Bh','Hs','Mt','Ds',
         'Rg','Cn','Nh','Fl','Mc','Lv','Ts','Og','Nw','Gl',
-	'Ls','Dm','Ms','T','Dt'
+	'Ls','Dm','Ms','T','Dt','Mw','Pk','By','Bz','Fn',
+	'Dw','To'
     ],
     fullNames: [
         null,
@@ -34,8 +35,9 @@ const ELEMENTS = {
         'Thallium','Lead','Bismuth','Polonium','Astatine','Radon','Francium','Radium','Actinium','Thorium',
         'Protactinium','Uranium','Neptunium','Plutonium','Americium','Curium','Berkelium','Californium','Einsteinium','Fermium',
         'Mendelevium','Nobelium','Lawrencium','Rutherfordium','Dubnium','Seaborgium','Bohrium','Hassium','Meitnerium','Darmstadium',
-        'Roeritgenium','Copernicium','Nihonium','Flerovium','Moscovium','Livermorium','Tennessine','Oganesson','Newtonium','Galilium',
-	'Lavoisium','Democritium','Moselium','Teslium','Daltonium'
+        'Roentgenium','Copernicium','Nihonium','Flerovium','Moscovium','Livermorium','Tennessine','Oganesson','Newtonium','Galilium',
+	'Lavoisium','Democritium','Moselium','Teslium','Daltonium','Maxwellium','Planckium','Boylium','Berzelium','Franklinium',
+        'Darwinium','Thomsonium'
     ],
     canBuy(x) {
         if (tmp.c16active && isElemCorrupted(x)) return false
@@ -1731,7 +1733,7 @@ function getElementId(x) {
 }
 
 function getElementName(x) {
-    if (x <= 125) return ELEMENTS.fullNames[x]
+    if (x <= 132) return ELEMENTS.fullNames[x]
     let log = Math.floor(Math.log10(x))
     let listF = ["Nil", "Un", "Bi", "Tri", "Quad", "Pent", "Hex", "Sept", "Oct", "Enn"]
     let list = ["nil", "un", "bi", "tri", "quad", "pent", "hex", "sept", "oct", "enn"]
@@ -1810,7 +1812,7 @@ function setupElementsHTML() {
             else if (m=='x') {
                 num++
                 table += ELEMENTS.upgs[num]===undefined?`<div style="width: 50px; height: 50px"></div>`
-                :`<button class="elements ${num == 125 ? 'final' : ''}" id="elementID_${num}" onclick="buyElement(${num}); ssf[0]('${ELEMENTS.names[num]}')" onmouseover="tmp.elements.choosed = ${num}" onmouseleave="tmp.elements.choosed = 0">
+                :`<button class="elements ${num == 132 ? 'final' : ''}" id="elementID_${num}" onclick="buyElement(${num}); ssf[0]('${ELEMENTS.names[num]}')" onmouseover="tmp.elements.choosed = ${num}" onmouseleave="tmp.elements.choosed = 0">
                 <div style="font-size: 12px;">${num}</div><sup class="muon-symbol"></sup>${ELEMENTS.names[num]}
                 </button>`
                 if (k == 1) {
